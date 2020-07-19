@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+    <!--"/auxclass.css" for github upload-->
+    <link rel="stylesheet" type="text/css" href="/auxclass.css">
+</head>
+<body>
+    <h1>Notes on Fluid Dynamics</h1>
+    <a class="aa" href="index.html">[Home]</a>
+    <table class="shadow-card table-500px table-all" style="user-select: all;">
+        <tr>
+            <th class="th-notes">
+                DISCLAIMER:
+            </th>
+        </tr>
+        <tr>
+            <td class="td-notes">
+                Following notes are my personal interpretation of the material, which at times may be errenous or misleading.
+                These notes represent the specific way in which I have understood the material and may not be suitable for
+                educational purposes. No self-respecting blogger would use these as a reference. Just saying, there may be
+                errors that I won't have time to correct.
+                Feedback and corrections are welcomed.
+            </td>
+        </tr>
+    </table>
+
+    <table class="table-content">
+        <tr>
+            <th>
+                <a class="heading" href="#Velocity-Components-of-Source-and-Sink-in-polar-coordinates">
+                    <p id="Velocity-Components-of-Source-and-Sink-in-polar-coordinates">
+                        Velocity Components of Source and Sink in Polar Coordinates
+                    </p>
+                </a>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <font color="#2b8ae0">Stream function </font>comes from the continuity equation \(\color{#2b8ae0}\nabla\cdot V=0 \)
+                <p />
+                <font color="#bb3e19">Potential function </font> comes from irrotationality equation \(\color{#bb3e19}\nabla \times V = 0\)
+                <p />
+                I'm going to use colours to keep the distinction clear.
+                <p />
+                <p class="heading">Stream function</p>
+                To find velocity components through stream function we are going to use the EXACT ODE method.
+                $$\color{#2b8ae0}\nabla\cdot V=0 $$
+
+                $$\color{#2b8ae0}
+                \frac{\partial u_r}{\partial r} + \frac{1}{r}\frac{\partial u_{\theta}}{\partial \theta} = 0
+                $$
+
+                Let there be some function \(\psi\), derivative of which w.r.t. \(\theta \) is :
+                $$\color{#2b8ae0}
+                u_r = \frac{1}{r}\psi_{_\theta}
+                $$
+
+                At the same time the derivative of \(\psi\) w.r.t. \(r\) is:
+                $$\color{#2b8ae0}
+                u_{\theta} = -\psi_{_r}
+                $$
+
+                <!--Below is the START of collapsible content-->
+                <div class="collapsible">[Click to show details] <i> How to come to these assumptions by trial and error</i></div>
+                <div class="content">
+                    You don't have to memorize anything here. Let's get to the above functions by trial and error.
+                    <p />
+                    Let's begin solving this PDE using the exact method. Let there be some function psi (\(\psi\))
+                    where if we take it's derivative w.r.t. theta we get \(u_r\):
+                    $$
+                    \frac{\partial \psi}{\partial\theta} = u_r
+                    $$
+                    Also, a derivative of \(\psi\) w.r.t. \(r \) would be \(u_{\theta}\):
+                    $$
+                    \frac{\partial \psi}{\partial r} = u_{\theta}
+                    $$
+                    NOTE: This is not correct, but that's ok. This is how we get to the correct version. Bear with me.
+                    <p />
+                    For this to be an exact PDE the following must be true:
+                    $$
+                    \frac{\partial }{\partial r}\frac{\partial \psi}{\partial\theta}
+                    =\frac{\partial }{\partial \theta}\frac{\partial \psi}{\partial r}
+                    $$
+                    Let us see if this is the case by plugging our assumptions into the PDE.
+
+                    <p />
+                    For this to be an exact ODE (or PDE in this our case), if we plug the above assumptions into mass continuity
+                    equation the following must be true,
+                    $$
+                    \frac{\partial}{\partial r}\psi_{_\theta} \equiv
+                    \frac{\partial}{\partial \theta}\psi_{_r}
+                    $$
+
+                    Let's plug it in and see if it's true, and if it's not, what we can do about it.
+                    $$\text{PDE:   }
+                    \frac{\partial u_r}{\partial r} + \frac{1}{r}\frac{\partial u_{\theta}}{\partial \theta} = 0
+                    $$
+
+                    $$
+                    \frac{\partial}{\partial r}\frac{\partial \psi}{\partial\theta}
+                    + \frac{1}{r}\frac{\partial}{\partial \theta}\frac{\partial \psi}{\partial r} = 0
+                    $$
+
+                    $$
+                    \frac{\partial}{\partial r}\frac{\partial \psi}{\partial\theta}
+                    =- \frac{1}{r}\frac{\partial}{\partial \theta}\frac{\partial \psi}{\partial r}
+                    $$
+                    in other words,
+                    $$
+                    \frac{\partial}{\partial r} \psi{_\theta}
+                    \ne- \frac{1}{r} \frac{\partial}{\partial \theta} \psi{_r}
+                    $$
+                    But that's ok. We can see what needs to be done. To make this equality true, let's make
+                    the following adjustments:
+                    $$
+                    u_r = \frac{1}{r} \psi{_\theta}, \ \ \ \  u_{\theta}=-\psi_{_r}
+                    $$
+                    Let us plug these new assumptions into the PDE.
+                    $$
+                    \frac{\partial u_r}{\partial r} + \frac{1}{r}\frac{\partial u_{\theta}}{\partial \theta} = 0
+                    $$
+
+                    $$
+                    \frac{\partial}{\partial r}\frac{1}{r}\frac{\partial \psi}{\partial\theta}
+                    + \frac{1}{r}\frac{\partial}{\partial \theta}\biggl(-\frac{\partial \psi}{\partial r}\biggr) = 0
+                    $$
+
+                    $$
+                    \frac{\partial}{\partial r}\frac{1}{r}\psi{_\theta}
+                    - \frac{1}{r}\frac{\partial}{\partial \theta} \psi{_r} = 0
+                    $$
+
+                    $$
+                    \frac{\partial}{\partial r}\frac{1}{r}\psi{_\theta}
+                    = \frac{1}{r}\frac{\partial}{\partial \theta} \psi{_r}
+                    $$
+
+                    $$
+                    \frac{\partial}{\partial r}\psi_{_\theta} \equiv
+                    \frac{\partial}{\partial \theta}\psi_{_r}
+                    $$
+                    Therefore, these assumptions are correct, and we can solve our PDE using the exact method.
+                    Except, we were not solving it. We were just looking for the velocity components.
+
+                    <!--Below is the END of collapsible content-->
+                </div>
+
+                <p class="heading">Potential function</p>
+                To find velocity components through potential function is a bit easier.
+                $$\color{#bb3e19}\nabla \times V = 0$$
+                $$\color{#bb3e19}V=\nabla \phi $$
+                $$\color{#bb3e19}
+                u_r \hat r +u_{\theta} \hat \theta =
+                \hat r \frac{\partial \phi}{\partial r}
+                + \frac{1}{r}\hat \theta \frac{\partial \phi}{\partial \theta}
+                $$
+                Left Hand Side (LHS) is equal to the Right Hand Side (RHS). Both sides are vectors.
+                Therefore, we can conclude that,
+                $$\color{#bb3e19}
+                u_r = \frac{\partial \phi }{ \partial r} \ \ \ \ \ u_{\theta}=\frac{1}{r}\frac{\partial \phi}{\partial \theta}
+                $$
+                FYI, we've just paired the \(\hat r\) and \(\hat\theta\) components to their counterparts.
+
+                <p />
+                <p class="heading">Velocity components in polar coordinates</p>
+                Bring it all together, we can now define our velocity components of the fluid in a steady, incompressible, irrotational
+                flow in the polar coordinate system.
+
+                $$
+                u_r  \color{#2b8ae0} = \frac{1}{r}\psi_{_\theta} \color{#bb3e19} = \frac{\partial \phi }{ \partial r}
+                $$
+
+                $$
+                u_{\theta}  \color{#2b8ae0} = -\psi_{_r} \color{#bb3e19} = \frac{1}{r}\frac{\partial \phi}{\partial \theta}
+                $$
+
+            </td>
+        </tr>
+    </table>
+    <!--Script below is for collapsible content-->
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
